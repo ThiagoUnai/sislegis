@@ -1,0 +1,112 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="content">
+		<h1 class="aw-page-title">Planeje as cotas parlamentares para uso</h1>
+
+		<h:form id="frm">
+
+			<hr color="#1e94d2" />
+
+			<p:messages id="mensagem" />
+
+			<h:panelGrid columns="1" style="margin-top: 20px" id="gridCadastro">
+
+				<!-- Recebendo o id para atualização -->
+				<h:inputHidden
+					value="#{planejamentoCotaController.planejamentoCota.idPlanejamento}" />
+
+				<p:outputLabel value="Data Início:" for="dataInicio" />
+				<p:calendar id="dataInicio"
+					value="#{planejamentoCotaController.planejamentoCota.dataInicio}"
+					size="154" pattern="dd-MM-yyyy">
+
+				</p:calendar>
+
+				<p:outputLabel value="Data Fim:" for="dataFim" />
+				<p:calendar id="dataFim"
+					value="#{planejamentoCotaController.planejamentoCota.dataFim}"
+					size="154" pattern="dd-MM-yyyy">
+
+				</p:calendar>
+
+				<p:outputLabel value="Cota Limitada:" />
+				<p:selectBooleanButton
+					value="#{planejamentoCotaController.planejamentoCota.cotaLimitada}"
+					onLabel="Não" offLabel="Sim" onIcon="ui-icon-check"
+					offIcon="ui-icon-close" style="width:1115px">
+					<f:ajax render="limitada" />
+				</p:selectBooleanButton>
+
+
+				<h:panelGroup id="limitada">
+					<h:panelGroup
+						rendered="#{planejamentoCotaController.planejamentoCota.cotaLimitada != true}">
+						<h:panelGrid columns="1">
+							<p:outputLabel value="Quantidade Permitida:" />
+							<p:inputText
+								value="#{planejamentoCotaController.planejamentoCota.quantidadePermitida}"
+								size="153" />
+						</h:panelGrid>
+					</h:panelGroup>
+				</h:panelGroup>
+
+				<p:outputLabel value="Descrição:" for="descricao" />
+				<p:inputText id="descricao"
+					value="#{planejamentoCotaController.planejamentoCota.descricao}"
+					size="154" />
+
+				<p:outputLabel value="Cota Parlamentar:" />
+				<p:selectOneMenu
+					value="#{planejamentoCotaController.planejamentoCota.cotaParlamentar}"
+					filter="true" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="Selecione a cota parlamentar" />
+					<f:selectItems
+						value="#{planejamentoCotaController.cotasParlamentares}"
+						var="cota" itemLabel="#{cota.nome}" itemValue="#{cota}">
+					</f:selectItems>
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Vereador:" />
+				<p:selectOneMenu
+					value="#{planejamentoCotaController.planejamentoCota.vereador}"
+					filter="true" converter="omnifaces.SelectItemsConverter">
+					<f:selectItem noSelectionOption="true"
+						itemLabel="Selecione um vereador" />
+					<f:selectItems value="#{planejamentoCotaController.vereadores}"
+						var="vereador" itemLabel="#{vereador.nomeParlamentar}"
+						itemValue="#{vereador}">
+					</f:selectItems>
+				</p:selectOneMenu>
+				<p:outputLabel />
+
+			</h:panelGrid>
+			<p:toolbar style="margin-top: 20px">
+			<f:facet name="left">
+			
+					<p:commandButton value="salvar"
+						actionListener="#{planejamentoCotaController.salvar}"
+						update="mensagem :frm" style="width:546px" />
+					
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:button outcome="/pages/planejamentoCotas.xhtml"
+						value="Voltar aos Planejamentos de Cotas"
+						style="width:546px"/>
+				
+				</f:facet>
+			</p:toolbar>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Configurações de Conexão com o Banco de Dados -->
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/sislegis</property>
+		<property name="connection.username">postgres</property>
+		<property name="connection.password">ti@postgresql</property>
+
+		<!-- Pool de Conexões -->
+		<property name="connection.pool_size">1</property>
+
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- Gerenciamento do Contexto das Sessões -->
+		<property name="current_session_context_class">thread</property>
+
+		<!-- Cache de Segundo Nível -->
+		<property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+		<!-- Mostra as SQLs Geradas -->
+		<property name="show_sql">true</property>
+
+		<!-- Cria as tabelas do banco de dados -->
+		<property name="hbm2ddl.auto">validate</property>
+		
+		<mapping class="br.com.sislegis.model.Estado"/>
+		<mapping class="br.com.sislegis.model.Partido"/>
+		<mapping class="br.com.sislegis.model.Perfil"/>
+		<mapping class="br.com.sislegis.model.CotaParlamentar"/>
+		<mapping class="br.com.sislegis.model.Usuario"/>
+		<mapping class="br.com.sislegis.model.Municipio"/>
+		<mapping class="br.com.sislegis.model.Endereco"/>
+		<mapping class="br.com.sislegis.model.Pessoa"/>
+		<mapping class="br.com.sislegis.model.Vereador"/>
+		<mapping class="br.com.sislegis.model.Legislatura"/>	
+		<mapping class="br.com.sislegis.model.Prefeito"/>
+		<mapping class="br.com.sislegis.model.PlanejamentoCota"/>
+		<mapping class="br.com.sislegis.model.AgendamentoCota"/>
+		<mapping class="br.com.sislegis.model.Lancamento"/>
+	</session-factory>
+
+</hibernate-configuration>

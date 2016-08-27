@@ -1,0 +1,63 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+
+	<ui:define name="content">
+		<h1 class="aw-page-title">Cotas parlamentares</h1>
+
+		<h:form id="frm">
+
+			<hr color="#1e94d2" />
+			<p:messages id="mensagem" />
+
+			<div class="ui-fluid">
+				<h:panelGrid columns="1" style="margin-top: 20px" id="gridCadastro">
+
+					<!-- Recebendo o id para atualização -->
+					<h:inputHidden
+						value="#{cotaParlamentarControlle.cotaParlamentar.idCota}" />
+
+					<p:outputLabel value="Nome da Cota Parlamentar:" for="nomeCota" />
+					<p:inputText id="nomeCota"
+						value="#{cotaParlamentarControlle.cotaParlamentar.nome}"
+						style="width:1115px" />
+
+					<p:outputLabel value="Descrição:" for="descricaoCota" />
+					<p:inputText id="descricaoCota"
+						value="#{cotaParlamentarControlle.cotaParlamentar.descricao}"
+						style="width:1115px"  />
+
+
+					<p:outputLabel value="Ativa:" />
+					<p:selectBooleanButton
+						value="#{cotaParlamentarControlle.cotaParlamentar.ativa}"
+						onLabel="Sim" offLabel="Não" onIcon="ui-icon-check"
+						offIcon="ui-icon-close" />
+				</h:panelGrid>
+			</div>
+			<p:toolbar style="margin-top: 20px">
+
+				<f:facet name="left">
+					<p:commandButton value="salvar"
+						actionListener="#{cotaParlamentarControlle.salvar}"
+						update="mensagem :frm" style="width: 546px"/>
+
+					<span class="ui-separator"> <span
+						class="ui-icon ui-icon-grip-dotted-vertical" />
+					</span>
+
+					<p:button outcome="/pages/cotasParlamentares.xhtml"
+						value="Voltar as Cotas Parlamentares"  style="width: 546px"/>
+				</f:facet>
+
+			</p:toolbar>
+
+		</h:form>
+
+	</ui:define>
+
+</ui:composition>
+
