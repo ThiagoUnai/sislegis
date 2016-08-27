@@ -39,19 +39,19 @@
 		<!-- Cria as tabelas do banco de dados -->
 		<property name="hbm2ddl.auto">validate</property>
 		
-		<mapping class="br.com.sislegis.model.Estado"/>
-		<mapping class="br.com.sislegis.model.Partido"/>
-		<mapping class="br.com.sislegis.model.Perfil"/>
-		<mapping class="br.com.sislegis.model.CotaParlamentar"/>
-		<mapping class="br.com.sislegis.model.Usuario"/>
-		<mapping class="br.com.sislegis.model.Municipio"/>
-		<mapping class="br.com.sislegis.model.Endereco"/>
-		<mapping class="br.com.sislegis.model.Pessoa"/>
-		<mapping class="br.com.sislegis.model.Vereador"/>
-		<mapping class="br.com.sislegis.model.Legislatura"/>	
-		<mapping class="br.com.sislegis.model.PlanejamentoCota"/>
-		<mapping class="br.com.sislegis.model.AgendamentoCota"/>
-		<mapping class="br.com.sislegis.model.Lancamento"/>
+		<mapping class="br.com.societysystem.sislegis.model.Estado"/>
+		<mapping class="br.com.societysystem.sislegis.model.Partido"/>
+		<mapping class="br.com.societysystem.sislegis.model.Perfil"/>
+		<mapping class="br.com.societysystem.sislegis.model.CotaParlamentar"/>
+		<mapping class="br.com.societysystem.sislegis.model.Usuario"/>
+		<mapping class="br.com.societysystem.sislegis.model.Municipio"/>
+		<mapping class="br.com.societysystem.sislegis.model.Endereco"/>
+		<mapping class="br.com.societysystem.sislegis.model.Pessoa"/>
+		<mapping class="br.com.societysystem.sislegis.model.Vereador"/>
+		<mapping class="br.com.societysystem.sislegis.model.Legislatura"/>	
+		<mapping class="br.com.societysystem.sislegis.model.PlanejamentoCota"/>
+		<mapping class="br.com.societysystem.sislegis.model.AgendamentoCota"/>
+		<mapping class="br.com.societysystem.sislegis.model.Lancamento"/>
 	</session-factory>
 
 </hibernate-configuration>

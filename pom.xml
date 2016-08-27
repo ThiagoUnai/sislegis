@@ -1,36 +1,17 @@
 ﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>societysystem</groupId>
-	<artifactId>Sislegis</artifactId>
-	<version>1.0</version>
+	<groupId>br.com.societysystem</groupId>
+	<artifactId>sislegis</artifactId>
+	<version>1.0.0</version>
 
 	<packaging>war</packaging>
 
-	<!-- Codificação dos caracteres -->
 	<properties>
+		<default.encoding>UTF-8</default.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdk.version>1.8</jdk.version>
 	</properties>
-
-	<!-- Parâmetros de execução -->
-	<build>
-		<!-- Nome do projeto empacotado -->
-		<finalName>Sislegis</finalName>
-
-		<!-- Plugins -->
-		<plugins>
-			<!-- Compilador -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
 
 	<repositories>
 		<repository>
@@ -110,7 +91,7 @@
 		</dependency>
 
 
-		
+
 
 		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-validator -->
 		<dependency>
@@ -121,5 +102,39 @@
 
 
 	</dependencies>
+
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<encoding>${default.encoding}</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<webResources>
+						<resource>
+							<filtering>true</filtering>
+							<directory>src/main/webapp</directory>
+							<includes>
+								<include>**/web.xml</include>
+							</includes>
+						</resource>
+					</webResources>
+					<warSourceDirectory>src/main/webapp</warSourceDirectory>
+					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 </project>
