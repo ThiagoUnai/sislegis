@@ -22,21 +22,21 @@
 					value="#{lancamentoController.lancamento.idLancamento}" />
 
 				<p:outputLabel value="Planejamento:" />
-				<p:selectOneMenu
+				<p:selectOneMenu style="width: 1090px"
 					value="#{lancamentoController.lancamento.planejamentoCota}"
 					filter="true" converter="omnifaces.SelectItemsConverter">
 					<f:selectItem noSelectionOption="true"
 						itemLabel="Selecione o planejamento" />
 					<f:selectItems value="#{lancamentoController.planejamentos}"
-						var="planejamento" itemLabel="#{planejamento.descricao} - #{planejamento.vereador.nome}"
+						var="planejamento" itemLabel="#{planejamento.cotaParlamentar.nome} - #{planejamento.vereador.nome}"
 						itemValue="#{planejamento}">
 					</f:selectItems>
 				</p:selectOneMenu>
 
 
 				<p:outputLabel value="Solicitante:" />
-				<p:selectOneMenu
-					value="#{lancamentoController.lancamento.planejamentoCota}"
+				<p:selectOneMenu style="width: 1090px"
+					value="#{lancamentoController.lancamento.pessoa}"
 					filter="true" converter="omnifaces.SelectItemsConverter">
 					<f:selectItem noSelectionOption="true"
 						itemLabel="Selecione o solicitante" />
@@ -77,20 +77,20 @@
 
 			</h:panelGrid>
 			
-			<!-- <p:toolbar style="margin-top: 20px">
+			<p:toolbar style="margin-top: 20px">
 				<f:facet name="left">
 					<p:commandButton value="salvar"
-						actionListener="#{planejamentoCotaController.salvar}"
-						update="mensagem :frm" style="width:546px" />
+						actionListener="#{lancamentoController.salvar}"
+						update="mensagem :frm" style="width:543px" />
 
 					<span class="ui-separator"> <span
 						class="ui-icon ui-icon-grip-dotted-vertical" />
 					</span>
 
 					<p:button outcome="/pages/planejamentoCotas.xhtml"
-						value="Voltar aos Planejamentos de Cotas" style="width:546px" />
+						value="Voltar aos Planejamentos de Cotas" style="width:543px" />
 				</f:facet>
-			</p:toolbar> -->
+			</p:toolbar> 
 
 		</h:form>
 

@@ -1,6 +1,10 @@
 package br.com.societysystem.sislegis.controller;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
+
+import org.omnifaces.util.Messages;
 
 import br.com.societysystem.sislegis.model.Lancamento;
 import br.com.societysystem.sislegis.model.Pessoa;
@@ -38,9 +42,33 @@ public class LancamentoController
 	
 	public void salvar()
 	{
-		
+		try
+		{
+			lancamentoDAO.salvar(lancamento);
+			Messages.addGlobalInfo("Lançamento realizado com sucesso!");
+			inicializar();
+		}
+		catch(RuntimeException ex)
+		{
+			Messages.addGlobalError("Erro ao tentar realizar o lançamento!");
+		}
 	}
 	
+	
+	
+	@PostConstruct
+	public void listar()
+	{
+		try
+		{
+			lancamentos = lancamentoDAO.listar();
+		}
+		catch(RuntimeException erro)
+		{
+			Messages.addGlobalError("Erro ao tentar carregar a lista de lançamentos realizados!");
+			erro.printStackTrace();
+		}
+	}
 	
 	
 	public Lancamento getLancamento() {
