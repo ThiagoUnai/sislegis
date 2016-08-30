@@ -5,7 +5,7 @@ import org.hibernate.Session;
 
 import br.com.societysystem.sislegis.util.HibernateUtil;
 
-
+ 
 public class HibernateUtilTest
 {
 	
