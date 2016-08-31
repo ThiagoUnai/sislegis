@@ -59,6 +59,7 @@ public class LancamentoController
 	@PostConstruct
 	public void listar()
 	{//teste
+		//TWARW
 		try
 		{
 			lancamentos = lancamentoDAO.listar();
