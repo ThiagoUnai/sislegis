@@ -58,7 +58,7 @@ public class LancamentoController
 	
 	@PostConstruct
 	public void listar()
-	{
+	{//teste
 		try
 		{
 			lancamentos = lancamentoDAO.listar();
