@@ -27,7 +27,7 @@ public class LancamentoController
 	
 	
 	public LancamentoController()
-	{ //teste
+	{ //teste123
 		lancamento = new Lancamento();
 		planejamentos = planejamentoDAO.listar();
 		pessoas = pessoaDAO.listar();
